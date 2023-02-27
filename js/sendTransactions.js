@@ -10,6 +10,9 @@ const getCurrentAccout = async () => {
     balance = await provider.getBalance(currentAccount).then((balance) => utils.formatEther(balance));
     console.log(balance);
 };
+const handleChainChanged = (_chainId) => {
+    window.location.reload();
+};
 ethereum.on("accountsChanged", getCurrentAccout);
-
+ethereum.on("chainChanged", handleChainChanged);
 getCurrentAccout();
